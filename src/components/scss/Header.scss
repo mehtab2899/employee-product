@@ -1,0 +1,40 @@
+.header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+
+	&__bg {
+		background: rgb(167, 88, 204);
+	}
+
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		cursor: pointer;
+		color: #000;
+		padding: 2rem 3rem;
+
+		&--logo {
+			object-fit: contain;
+			width: 8rem;
+		}
+
+		&--items {
+			display: flex;
+			list-style: none;
+			font-size: 2rem;
+		}
+
+		&--links {
+			text-decoration: none;
+			color: inherit;
+			padding: 0.5rem 2rem;
+
+			&:hover {
+				color: #867ae9;
+				transition: all 0.2s ease-out;
+			}
+		}
+	}
+}

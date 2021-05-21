@@ -1,0 +1,66 @@
+.pricing {
+	padding: 8rem 0;
+
+	& h1 {
+		text-align: center;
+		font-size: 5rem;
+	}
+
+	&__content {
+		padding-top: 5rem;
+		display: grid;
+		grid-gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+		&--box {
+			height: 35rem;
+			width: 35rem;
+			margin: 0 auto;
+			border: 1px solid #000;
+			text-align: center;
+			color: #fff;
+			background: linear-gradient(-135deg, #c850c0, #4158d0);
+			border-radius: 10px;
+			border: none;
+
+			& i {
+				font-size: 5rem;
+				margin-top: 2rem;
+			}
+
+			h4 {
+				margin-top: 1rem;
+				font-size: 3rem;
+			}
+
+			h1 {
+				font-size: 5rem;
+			}
+
+			& ul {
+				list-style: none;
+				margin-top: 2rem;
+
+				& li {
+					font-size: 1.5rem;
+				}
+			}
+
+			& button {
+				margin-top: 3rem;
+				padding: 1rem 2rem;
+				border: none;
+				border-radius: 2rem;
+				color: #000;
+				background: #fff;
+				box-shadow: 0px 5px 20px 0px rgba(50, 10, 68, 0.5);
+				cursor: pointer;
+
+				&:hover {
+					background: #000;
+					color: #fff;
+				}
+			}
+		}
+	}
+}

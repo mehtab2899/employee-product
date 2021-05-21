@@ -1,0 +1,15 @@
+.footer {
+	padding: 2rem 0;
+	text-align: center;
+	background: rgb(121, 61, 177);
+
+	& img {
+		object-fit: contain;
+		width: 12rem;
+	}
+
+	& p {
+		font-size: 2rem;
+		color: #fff;
+	}
+}
