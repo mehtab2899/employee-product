@@ -1,22 +1,65 @@
 .about {
-	padding: 5rem 2rem;
+	margin: 5rem;
 
 	& h1 {
 		text-align: center;
 		font-size: 5rem;
+		color: #1a2238;
 	}
 
 	&__content {
+		margin: 10rem 0;
 		display: flex;
-		margin-top: 2rem;
 
-		& p {
-			font-size: 2rem;
+		&--left {
+			max-width: 50%;
+
+			& h2 {
+				padding: 1.5rem 0;
+			}
+
+			& p {
+				font-size: 1.5rem;
+				padding-bottom: 3rem;
+			}
 		}
 
-		& img {
-			object-fit: contain;
-			width: 60rem;
+		&--right {
+			width: 50%;
+			position: relative;
+
+			& img {
+				width: 30rem;
+				box-shadow: 0 1.5rem 4rem rgba(#000, 0.4);
+				position: absolute;
+				z-index: 10;
+				outline-offset: 1.2rem;
+				transition: all 0.3s;
+
+				&:hover {
+					transform: scale(1.05) translateY(-0.5rem);
+					box-shadow: 0 2.5rem 4rem rgba(#ff6a3d, 0.5);
+					z-index: 20;
+					outline: 1rem solid #ff6a3d;
+				}
+			}
+
+			& .i1 {
+				left: 3rem;
+				top: -2rem;
+			}
+
+			& .i2 {
+				top: 2rem;
+				right: 1rem;
+			}
+
+			& .i3 {
+				position: absolute;
+
+				top: 10rem;
+				left: 20%;
+			}
 		}
 	}
 }

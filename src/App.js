@@ -7,12 +7,16 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 AOS.init();
 
 const App = () => {
 	return (
 		<div>
+			{/* header */}
+			<Header />
+
 			{/* home */}
 			<Home />
 

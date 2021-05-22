@@ -1,33 +1,34 @@
 import React from "react";
 import "./scss/About.scss";
-import img from "../img/home.png";
+import img1 from "../img/e1.jpg";
+import img2 from "../img/e2.jpg";
+import img3 from "../img/e3.jpg";
 
 const About = () => {
 	return (
 		<div className="about">
 			<h1>About</h1>
 			<div className="about__content">
-				<div data-aos="zoom-in">
+				<div className="about__content--left">
+					<h2>YOU'RE GONNA FALL IN LOVE WITH NATURE</h2>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sint
-						pariatur, non adipisci dolorum cumque labore nisi explicabo ipsum
-						repellendus perferendis id aspernatur voluptas magnam. Quam ducimus
-						sint dolore voluptas voluptate! Perspiciatis hic impedit consectetur
-						tempora explicabo delectus vel fugit exercitationem quod? Repellat,
-						illum! Ipsam perspiciatis adipisci reiciendis vel voluptates? Lorem
-						ipsum, dolor sit amet consectetur adipisicing elit. Aliquid, earum.
-						Optio eaque alias expedita dolorem placeat dolores voluptatem
-						repellat aut nobis, velit esse consequuntur, ea libero obcaecati
-						dolore fuga hic?
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
+						nulla! Officia vero itaque voluptates temporibus quasi quaerat
+						ipsam.
 					</p>
+					<h2>YOU'RE GONNA FALL IN LOVE WITH NATURE</h2>
 					<p>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore
-						cupiditate tempora cumque accusamus veritatis, animi vero quod
-						eveniet nobis repellendus quisquam eligendi, eos reprehenderit, in
-						eaque delectus doloremque consectetur sunt.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
+						nulla! Officia vero itaque voluptates temporibus quasi quaerat
+						ipsam.
 					</p>
 				</div>
-				<img src={img} alt="" data-aos="zoom-in" />
+
+				<div className="about__content--right">
+					<img src={img3} className="i1" alt="about-img" />
+					<img src={img1} className="i2" alt="about-img" />
+					<img src={img2} className="i3" alt="about-img" />
+				</div>
 			</div>
 		</div>
 	);

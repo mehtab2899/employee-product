@@ -1,21 +1,22 @@
 import React from "react";
 import "./scss/Home.scss";
-import Header from "./Header";
 
 const Home = () => {
 	return (
 		<div className="home">
-			<Header />
-			<div className="home__content" data-aos="zoom-in-up">
-				<h1>Your Life's Work, Powered By Our Life's Work</h1>
-				<p>
-					Unique and powerful suite of software to run your entire business,
-					brought to you by a company with the long term vision to transform the
-					way you work. Unique and powerful suite of software to run your entire
-					business, brought to you by a company with the long term vision to
-					transform the way you work.
-				</p>
-				{/* <button>Get Started</button> */}
+			<div
+				className="home__content"
+				data-aos="zoom-in-up"
+				data-aos-duration="1500"
+			>
+				<h1>
+					<span className="word1">We love </span>
+					to empower <span className="word2">Employee Peformace</span>,
+					thoughtfully focused on <span className="word2">Business Growth</span>
+					, and with fully powered{" "}
+					<span className="word2">Employee Engagement.</span>
+				</h1>
+				<button>Explore our services</button>
 			</div>
 		</div>
 	);

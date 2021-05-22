@@ -19,4 +19,9 @@ export const NavItems = [
 		url: "#",
 		cName: "header__nav--links",
 	},
+	{
+		title: "Sign In",
+		url: "#",
+		cName: "header__nav--links",
+	},
 ];

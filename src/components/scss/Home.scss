@@ -1,37 +1,68 @@
 .home {
 	color: #fff;
-	background-image: url("../../img/pexels-christina-morillo-1181622.jpg");
-	background-position: center center;
-	background-size: cover;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+	background: #1a2238;
+	clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);
 
 	&__content {
 		text-align: center;
+		display: flex-inline;
 
 		& h1 {
 			font-size: 5rem;
-		}
+			margin: 5rem 0;
 
-		& p {
-			font-size: 1.2rem;
-		}
+			& .word1 {
+				color: #9daaf2;
+			}
 
-		& button {
-			margin-top: 2rem;
-			padding: 1rem 2rem;
-			font-size: 2rem;
-			border-radius: 5px;
-			border: none;
-			cursor: pointer;
-			background: rgb(117, 123, 212);
+			& .word2 {
+				padding-bottom: 0.4rem;
+				color: #ff6a3d;
+				background: url("../../img/squiggle-h3.png");
+				background-size: auto 9px;
+				background-position: left bottom;
+				background-repeat: repeat-x;
+				backface-visibility: hidden;
+				animation: move 10s linear infinite paused;
 
-			&:hover {
-				background: #000;
-				color: #fff;
+				&:hover {
+					cursor: pointer;
+					color: #d45028;
+					animation-play-state: running !important;
+				}
 			}
 		}
+	}
+
+	& button {
+		padding: 1.5rem 2rem;
+		font-size: 2rem;
+		border-radius: 25px;
+		border: none;
+		cursor: pointer;
+		background: #fff;
+		text-transform: uppercase;
+		color: #ff6a3d;
+		transition: all 0.3s;
+
+		&:hover {
+			background: #ff6a3d;
+			color: #fff;
+		}
+	}
+}
+
+// animations
+@keyframes move {
+	0% {
+		background-position: 2px bottom;
+	}
+	100% {
+		background-position: 500px bottom;
 	}
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import "./scss/Footer.scss";
-import logo from "../img/logo.png";
 
 const Footer = () => {
 	var date = new Date().getFullYear();
@@ -8,8 +7,9 @@ const Footer = () => {
 
 	return (
 		<div className="footer">
-			<img src={logo} alt="logo" />
-			<p>&copy;{date} by Employee Engagement System</p>
+			<h1>Employee Engagement</h1>
+			<h2>Change for betterment</h2>
+			<p>&copy; {date} by Company</p>
 		</div>
 	);
 };

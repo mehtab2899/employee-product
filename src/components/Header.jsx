@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./scss/Header.scss";
 import { NavItems } from "./NavItems";
-import logo from "../img/logo.png";
 
 const Header = () => {
 	const [show, handleShow] = useState(false);
@@ -13,14 +12,21 @@ const Header = () => {
 			} else handleShow(false);
 		});
 		return () => {
-			window.removeEventListener("scroll");
+			window.removeEventListener("scroll", () => {
+				if (window.scrollY > 100) {
+					handleShow(true);
+				} else handleShow(false);
+			});
 		};
 	}, []);
 
 	return (
 		<div className={`header ${show && "header__bg"}`}>
+			<h1 className="header__logo">
+				Employee <br />
+				<span>Engagement</span>
+			</h1>
 			<nav className="header__nav">
-				<img src={logo} className="header__nav--logo" alt="logo" />
 				<ul className="header__nav--items">
 					{NavItems.map((item, index) => {
 						return (
