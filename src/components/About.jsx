@@ -2,25 +2,30 @@ import React from "react";
 import "./scss/About.scss";
 import img1 from "../img/e1.jpg";
 import img2 from "../img/e2.jpg";
-import img3 from "../img/e3.jpg";
+import img3 from "../img/e4.jpg";
 
 const About = () => {
 	return (
-		<div className="about">
+		<div className="about" id="about">
 			<h1>About</h1>
 			<div className="about__content">
 				<div className="about__content--left">
-					<h2>YOU'RE GONNA FALL IN LOVE WITH NATURE</h2>
+					<h2>
+						Build an <span>Engaged Workforce</span>
+					</h2>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-						nulla! Officia vero itaque voluptates temporibus quasi quaerat
-						ipsam.
+						Improve team collaboration with continuous check-ins on goals and
+						inspire employees with instant appreciation, awards and peer
+						recognition. And create teams and manage project flawless and
+						empower your business.
 					</p>
-					<h2>YOU'RE GONNA FALL IN LOVE WITH NATURE</h2>
+					<h2>
+						Drive your <span>Employee Performance</span>
+					</h2>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-						nulla! Officia vero itaque voluptates temporibus quasi quaerat
-						ipsam.
+						Build high performing teams with continuous tracking management and
+						employee engagement system. And get control and maintain your
+						employee progress.
 					</p>
 				</div>
 

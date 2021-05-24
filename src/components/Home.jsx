@@ -3,7 +3,7 @@ import "./scss/Home.scss";
 
 const Home = () => {
 	return (
-		<div className="home">
+		<div className="home" id="home">
 			<div
 				className="home__content"
 				data-aos="zoom-in-up"
@@ -16,7 +16,8 @@ const Home = () => {
 					, and with fully powered{" "}
 					<span className="word2">Employee Engagement.</span>
 				</h1>
-				<button>Explore our services</button>
+
+				<a href="#features">Explore our features</a>
 			</div>
 		</div>
 	);

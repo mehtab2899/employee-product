@@ -23,8 +23,10 @@ const Header = () => {
 	return (
 		<div className={`header ${show && "header__bg"}`}>
 			<h1 className="header__logo">
-				Employee <br />
-				<span>Engagement</span>
+				<a href="/">
+					Employee <br />
+					<span>Engagement</span>
+				</a>
 			</h1>
 			<nav className="header__nav">
 				<ul className="header__nav--items">
