@@ -7,7 +7,7 @@ const Signs = () => {
 		<div className="signs">
 			<h1>Choose one of the option</h1>
 			<div className="signs__btns">
-				<NavLink className="signs__btns--links" to="/admin ">
+				<NavLink className="signs__btns--links" to="/admin">
 					Admin
 				</NavLink>
 				<NavLink className="signs__btns--links" to="/employee">
