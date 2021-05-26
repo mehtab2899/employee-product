@@ -1,12 +1,12 @@
 .header {
-	position: fixed;
+	position: sticky;
 	top: 0;
-	width: 100vw;
 	z-index: 100;
 	font-weight: bold;
-	padding: 0.5rem 2rem;
+	padding: 0.5rem;
 	display: flex;
 	justify-content: space-between;
+	background: #1a2238;
 
 	&__bg {
 		background: #1f2841;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import "./scss/Header.scss";
-import { NavItems } from "./NavItems";
+import { NavItems } from "./data/NavItems";
 
 const Header = () => {
 	const [show, handleShow] = useState(false);
@@ -33,9 +34,9 @@ const Header = () => {
 					{NavItems.map((item, index) => {
 						return (
 							<li key={index}>
-								<a className={item.cName} href={item.url}>
+								<NavLink className={item.cName} exact to={item.url}>
 									{item.title}
-								</a>
+								</NavLink>
 							</li>
 						);
 					})}

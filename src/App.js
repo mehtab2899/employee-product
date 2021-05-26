@@ -1,37 +1,34 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
-import Home from "./components/Home";
-import About from "./components/About";
-import Services from "./components/Services";
-import Pricing from "./components/Pricing";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import HomeScreen from "./components/screens/HomeScreen";
+import SignInScreen from "./components/screens/SignInScreen";
+import Admin from "./components/Admin";
+import Employee from "./components/Employee";
 
 AOS.init();
 
 const App = () => {
 	return (
-		<div>
+		<>
 			{/* header */}
 			<Header />
 
-			{/* home */}
-			<Home />
-
-			{/* about */}
-			<About />
-
-			{/* services */}
-			<Services />
-
-			{/* pricing */}
-			<Pricing />
+			{/* routing */}
+			<Switch>
+				<Route exact path="/" component={HomeScreen} />
+				<Route exact path="/signin" component={SignInScreen} />
+				<Route exact path="/admin" component={Admin} />
+				<Route exact path="/employee" component={Employee} />
+			</Switch>
 
 			{/* footer */}
 			<Footer />
-		</div>
+		</>
 	);
 };
 

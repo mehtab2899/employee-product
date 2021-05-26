@@ -1,6 +1,6 @@
 import React from "react";
 import "./scss/Pricing.scss";
-import { PricingData } from "./PricingData";
+import { PricingData } from "./data/PricingData";
 
 const Pricing = () => {
 	return (
@@ -22,28 +22,24 @@ const Pricing = () => {
 							</div>
 							<div className="option">
 								<ul>
-									{price.features1.map((feature) => {
+									{price.features1.map((feature, index) => {
 										return (
-											<>
-												<li key="index">
-													<i className={price.checkIcon} aria-hidden="true"></i>
-													&nbsp;
-													{feature}
-												</li>
-											</>
+											<li key={index}>
+												<i className={price.checkIcon} aria-hidden="true"></i>
+												&nbsp;
+												{feature}
+											</li>
 										);
 									})}
 								</ul>
 								<ul>
-									{price.features2.map((feature) => {
+									{price.features2.map((feature, index) => {
 										return (
-											<>
-												<li key="index">
-													<i className={price.timesIcon} aria-hidden="true"></i>
-													&nbsp;
-													{feature}
-												</li>
-											</>
+											<li key={index}>
+												<i className={price.timesIcon} aria-hidden="true"></i>
+												&nbsp;
+												{feature}
+											</li>
 										);
 									})}
 								</ul>
