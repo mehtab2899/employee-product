@@ -1,20 +1,32 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import emp_pic from "../img/p1.jpg";
 import styled from "styled-components";
-import JS from "./JS/date&time";
+// import JS from "./JS/date&time";
+import { logout } from "../actions/adminActions";
 
 const AsideBar = () => {
+	const dispatch = useDispatch();
+
+	const adminLogin = useSelector((state) => state.adminLogin);
+	const { adminInfo } = adminLogin;
+
+	const logoutHandler = () => {
+		dispatch(logout());
+	};
+
 	return (
 		<AsideContainer>
 			<div className="top">
 				<img src={emp_pic} alt="profile-pic" />
 				<h2>
-					Alex Joe <br /> <span>Project Manager</span>
+					{adminInfo.adminID}
+					<br /> <span>Project Manager</span>
 				</h2>
 			</div>
 			<div className="middle">
-				<div className="time">{JS.dateTime()}</div>
+				<div className="time">monday, 7.10pm</div>
 				<div className="board">
 					<i class="fas fa-border-all"></i>Dashboard
 				</div>
@@ -22,19 +34,19 @@ const AsideBar = () => {
 			<div className="bottom">
 				<ul>
 					<li>
-						<NavLink className="link" to="/feedback">
+						<Link className="link" to="/feedback">
 							<i class="fas fa-comment-alt"></i>Feedback
-						</NavLink>
+						</Link>
 					</li>
 					<li>
-						<NavLink className="link" to="/support">
+						<Link className="link" to="/support">
 							<i class="fas fa-question-circle"></i>Support
-						</NavLink>
+						</Link>
 					</li>
 					<li>
-						<NavLink className="link" to="/signs">
+						<Link className="link" to="/admin" onClick={logoutHandler}>
 							<i class="fas fa-sign-out-alt"></i>Logout
-						</NavLink>
+						</Link>
 					</li>
 				</ul>
 			</div>

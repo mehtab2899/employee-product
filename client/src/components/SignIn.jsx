@@ -1,55 +1,67 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import { login } from "./actions/action.auth";
+import React, { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./scss/SignIn.scss";
+import { login } from "../actions/adminActions";
+import Message from "./Message";
 
-const SignIn = ({ login, placeholder }) => {
-	const [loginData, setLoginData] = useState({
-		adminID: "",
-		password: "",
-	});
+const SignIn = ({ placeholder }) => {
+	const location = useLocation();
+	const history = useHistory();
 
-	const { adminID, password } = loginData;
+	const [adminID, setAdminID] = useState("");
+	const [password, setPassword] = useState("");
 
-	const onChange = (e) =>
-		setLoginData({ ...loginData, [e.target.name]: e.target.value });
+	const dispatch = useDispatch();
 
-	const onSubmit = (e) => {
+	const adminLogin = useSelector((state) => state.adminLogin);
+	const { error, adminInfo } = adminLogin;
+
+	const redirect = location.search
+		? location.search.split("=")[1]
+		: "/dashboard";
+
+	useEffect(() => {
+		if (adminInfo) {
+			history.push(redirect);
+		}
+	}, [history, adminInfo, redirect]);
+
+	const submitHandler = (e) => {
 		e.preventDefault();
-		login(adminID, password);
-		console.log(adminID, password);
+		dispatch(login(adminID, password));
 	};
 
 	return (
-		<div className="signin">
-			<h1>SignIn</h1>
-			<p>Login to your account</p>
-			<form onSubmit={(e) => onSubmit(e)}>
-				<input
-					type="text"
-					onChange={(e) => onChange(e)}
-					autoComplete="on"
-					name="adminID"
-					placeholder={placeholder}
-					required
-				/>
-				<input
-					type="password"
-					onChange={(e) => onChange(e)}
-					autoComplete="on"
-					name="password"
-					placeholder="password"
-					required
-				/>
+		<>
+			{error && <Message variant="danger">{error}</Message>}
 
-				<NavLink to="/forgot">Forgot your password?</NavLink>
-				<button type="submit">
-					<NavLink to="admin-dashboard">SignIn</NavLink>
-				</button>
-			</form>
-		</div>
+			<div className="signin">
+				<h1>SignIn</h1>
+				<p>Login to your account</p>
+				<form onSubmit={submitHandler}>
+					<input
+						type="text"
+						value={adminID}
+						onChange={(e) => setAdminID(e.target.value)}
+						placeholder={placeholder}
+						required
+					/>
+					<input
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						placeholder="password"
+						required
+					/>
+
+					<Link to="/forgot">Forgot your password?</Link>
+					<button type="submit">SignIn</button>
+				</form>
+			</div>
+		</>
 	);
 };
 
-export default connect(null, { login })(SignIn);
+export default SignIn;

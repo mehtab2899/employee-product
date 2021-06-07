@@ -1,20 +1,32 @@
 import express from "express";
 import dotenv from "dotenv";
+import colors from "colors";
 import connectDB from "./config/db.js";
 import cors from "cors";
-import auth from "./routes/auth.routes.js";
+import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
-dotenv.config({ path: "./config/config.env" });
+// importing routes
+import adminRoutes from "./routes/adminRoutes.js";
 
+// config dotenv environments
+dotenv.config();
+
+// db connection
 connectDB();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/auth", auth);
+// api end point
+app.use("/api/admins", adminRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 // set port
 app.listen(process.env.PORT, () => {
-	console.log(`application is running on ${process.env.PORT}`);
+	console.log(
+		`application is running on ${process.env.PORT}`.yellow.bold.underline
+	);
 });
