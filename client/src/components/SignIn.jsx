@@ -6,7 +6,7 @@ import "./scss/SignIn.scss";
 import { login } from "../actions/adminActions";
 import Message from "./Message";
 
-const SignIn = ({ placeholder }) => {
+const SignIn = () => {
 	const location = useLocation();
 	const history = useHistory();
 
@@ -45,14 +45,14 @@ const SignIn = ({ placeholder }) => {
 						type="text"
 						value={adminID}
 						onChange={(e) => setAdminID(e.target.value)}
-						placeholder={placeholder}
+						placeholder="Admin ID"
 						required
 					/>
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						placeholder="password"
+						placeholder="Password"
 						required
 					/>
 

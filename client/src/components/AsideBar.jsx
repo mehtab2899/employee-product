@@ -10,7 +10,9 @@ const AsideBar = () => {
 	const dispatch = useDispatch();
 
 	const adminLogin = useSelector((state) => state.adminLogin);
+	const employeeLogin = useSelector((state) => state.employeeLogin);
 	const { adminInfo } = adminLogin;
+	const { employeeInfo } = employeeLogin;
 
 	const logoutHandler = () => {
 		dispatch(logout());
@@ -21,7 +23,7 @@ const AsideBar = () => {
 			<div className="top">
 				<img src={emp_pic} alt="profile-pic" />
 				<h2>
-					{adminInfo.adminID}
+					{employeeInfo.employeeID}
 					<br /> <span>Project Manager</span>
 				</h2>
 			</div>

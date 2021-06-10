@@ -4,9 +4,11 @@ import colors from "colors";
 import connectDB from "./config/db.js";
 import cors from "cors";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
+import employees from "./data/employees.js";
 
 // importing routes
 import adminRoutes from "./routes/adminRoutes.js";
+import employeeRoutes from "./routes/employeeRoutes.js";
 
 // config dotenv environments
 dotenv.config();
@@ -20,6 +22,7 @@ app.use(cors());
 
 // api end point
 app.use("/api/admins", adminRoutes);
+app.use("/api/employees", employeeRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
