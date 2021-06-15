@@ -36,16 +36,16 @@ const registerAdmin = asyncHandler(async (req, res) => {
 	}
 
 	const admin = await Admin.create({
-		orgName,
 		adminID,
+		orgName,
 		password,
 	});
 
 	if (admin) {
 		res.status(201).json({
 			_id: admin._id,
-			orgName: admin.orgName,
 			adminID: admin.adminID,
+			orgName: admin.orgName,
 			token: generateToken(admin._id),
 		});
 	} else {
@@ -63,8 +63,8 @@ const getAdminProfile = asyncHandler(async (req, res) => {
 	if (admin) {
 		res.json({
 			_id: admin._id,
+			admidID: admin.adminID,
 			orgName: admin.orgName,
-			admidID: admin.email,
 		});
 	} else {
 		res.status(404);

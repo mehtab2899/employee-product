@@ -46,21 +46,21 @@ const SignUp = () => {
 						value={adminID}
 						onChange={(e) => setAdminID(e.target.value)}
 						placeholder="Admin ID"
-						required
+						// required
 					/>
 					<input
 						type="text"
 						value={orgName}
 						onChange={(e) => setOrgName(e.target.value)}
 						placeholder="Organisation Name"
-						required
+						// required
 					/>
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						placeholder="Password"
-						required
+						// required
 					/>
 					<button type="submit">SignUp</button>
 				</form>

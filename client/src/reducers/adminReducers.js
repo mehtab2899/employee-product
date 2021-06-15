@@ -34,6 +34,8 @@ export const adminRegisterReducer = (state = {}, action) => {
 			return { loading: false, adminInfo: action.payload };
 		case ADMIN_REGISTER_FAIL:
 			return { loading: false, error: action.payload };
+		case ADMIN_LOGOUT:
+			return {};
 		default:
 			return state;
 	}

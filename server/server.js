@@ -4,7 +4,6 @@ import colors from "colors";
 import connectDB from "./config/db.js";
 import cors from "cors";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
-import employees from "./data/employees.js";
 
 // importing routes
 import adminRoutes from "./routes/adminRoutes.js";

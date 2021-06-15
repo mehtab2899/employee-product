@@ -5,12 +5,12 @@ let adminSchema = mongoose.Schema(
 	{
 		adminID: {
 			type: String,
-			require: true,
+			required: true,
 			unique: true,
 		},
 		orgName: {
 			type: String,
-			require: true,
+			required: true,
 		},
 		password: {
 			type: String,
