@@ -1,8 +1,5 @@
 import React from "react";
 import "./scss/About.scss";
-import img1 from "../img/e1.jpg";
-import img2 from "../img/e2.jpg";
-import img3 from "../img/e4.jpg";
 
 const About = () => {
 	return (
@@ -30,9 +27,9 @@ const About = () => {
 				</div>
 
 				<div className="about__content--right">
-					<img src={img3} className="i1" alt="about-img" />
-					<img src={img1} className="i2" alt="about-img" />
-					<img src={img2} className="i3" alt="about-img" />
+					<img src="/images/e4.jpg" className="i1" alt="about-img" />
+					<img src="/images/e1.jpg" className="i2" alt="about-img" />
+					<img src="/images/e2.jpg" className="i3" alt="about-img" />
 				</div>
 			</div>
 		</div>

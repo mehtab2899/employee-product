@@ -1,12 +1,17 @@
 import React from "react";
-import Home from "../Home.jsx";
-import About from "../About.jsx";
-import Features from "../Features.jsx";
-import Pricing from "../Pricing.jsx";
+import Home from "../Home";
+import About from "../About";
+import Features from "../Features";
+import Pricing from "../Pricing";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const HomeScreen = () => {
 	return (
 		<div>
+			{/* header */}
+			<Header />
+
 			{/* home */}
 			<Home />
 
@@ -18,6 +23,8 @@ const HomeScreen = () => {
 
 			{/* pricing */}
 			<Pricing />
+
+			<Footer />
 		</div>
 	);
 };

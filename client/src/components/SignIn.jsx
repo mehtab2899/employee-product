@@ -20,7 +20,7 @@ const SignIn = () => {
 
 	const redirect = location.search
 		? location.search.split("=")[1]
-		: "/dashboard";
+		: "/admin-dashboard";
 
 	useEffect(() => {
 		if (adminInfo) {
@@ -36,7 +36,6 @@ const SignIn = () => {
 	return (
 		<>
 			{error && <Message variant="danger">{error}</Message>}
-
 			<div className="signin">
 				<h1>SignIn</h1>
 				<p>Login to your account</p>
@@ -46,12 +45,14 @@ const SignIn = () => {
 						value={adminID}
 						onChange={(e) => setAdminID(e.target.value)}
 						placeholder="Admin ID"
+						required
 					/>
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						placeholder="Password"
+						required
 					/>
 
 					<Link to="/forgot">Forgot your password?</Link>

@@ -1,6 +1,5 @@
 import React from "react";
 import "./scss/Footer.scss";
-import img from "../img/apple-touch-icon.png";
 
 const Footer = () => {
 	var date = new Date().getFullYear();
@@ -11,7 +10,7 @@ const Footer = () => {
 			<h2>Change for betterment</h2>
 			<p>
 				&copy; {date} by
-				<img src={img} alt="logo" />
+				<img src="/images/apple-touch-icon.png" alt="logo" />
 			</p>
 		</div>
 	);
