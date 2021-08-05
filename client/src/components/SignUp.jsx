@@ -6,67 +6,67 @@ import { register } from "../actions/adminActions";
 import Message from "./Message";
 
 const SignUp = () => {
-	const location = useLocation();
-	const history = useHistory();
+  const location = useLocation();
+  const history = useHistory();
 
-	const [orgName, setOrgName] = useState("");
-	const [adminID, setAdminID] = useState("");
-	const [password, setPassword] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [adminID, setAdminID] = useState("");
+  const [password, setPassword] = useState("");
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const adminRegister = useSelector((state) => state.adminRegister);
-	const { error, adminInfo } = adminRegister;
+  const adminRegister = useSelector((state) => state.adminRegister);
+  const { error, adminInfo } = adminRegister;
 
-	const redirect = location.search
-		? location.search.split("=")[1]
-		: "/dashboard";
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/admin-dashboard";
 
-	useEffect(() => {
-		if (adminInfo) {
-			history.push(redirect);
-		}
-	}, [history, adminInfo, redirect]);
+  useEffect(() => {
+    if (adminInfo) {
+      history.push(redirect);
+    }
+  }, [history, adminInfo, redirect]);
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		dispatch(register(orgName, adminID, password));
-	};
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(register(orgName, adminID, password));
+  };
 
-	return (
-		<>
-			{error && <Message variant="danger">{error}</Message>}
+  return (
+    <>
+      {error && <Message variant="danger">{error}</Message>}
 
-			<div className="signup">
-				<h1>SignUp</h1>
-				<p>Create your account</p>
-				<form onSubmit={submitHandler}>
-					<input
-						type="text"
-						value={adminID}
-						onChange={(e) => setAdminID(e.target.value)}
-						placeholder="Admin ID"
-						required
-					/>
-					<input
-						type="text"
-						value={orgName}
-						onChange={(e) => setOrgName(e.target.value)}
-						placeholder="Organisation Name"
-						required
-					/>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Password"
-						required
-					/>
-					<button type="submit">SignUp</button>
-				</form>
-			</div>
-		</>
-	);
+      <div className="signup">
+        <h1>SignUp</h1>
+        <p>Create your account</p>
+        <form onSubmit={submitHandler}>
+          <input
+            type="text"
+            value={adminID}
+            onChange={(e) => setAdminID(e.target.value)}
+            placeholder="Admin ID"
+            required
+          />
+          <input
+            type="text"
+            value={orgName}
+            onChange={(e) => setOrgName(e.target.value)}
+            placeholder="Organisation Name"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+          />
+          <button type="submit">SignUp</button>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default SignUp;

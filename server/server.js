@@ -7,12 +7,17 @@ import cors from "cors";
 import { Server } from "socket.io";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
-// users
-
 // importing routes
 import adminRoutes from "./routes/adminRoutes.js";
-
 import employeeRoutes from "./routes/employeeRoutes.js";
+
+// import users
+import {
+  userJoin,
+  userLeaves,
+  getCurrentUser,
+  getProjectUsers,
+} from "./users.js";
 
 // config dotenv environments
 dotenv.config();
@@ -20,58 +25,80 @@ dotenv.config();
 // db connection
 connectDB();
 
+// config app
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
-app.use(express.json());
-app.use(
-	cors({
-		origin: "http://localhost:5000",
-		methods: ["GET", "POST"],
-		allowedHeaders: ["my-custom-header"],
-		credentials: true,
-	})
-);
-
-// Defining CORS
-app.use(function (req, res, next) {
-	res.setHeader(
-		"Access-Control-Allow-Headers",
-		"X-Requested-With,content-type"
-	);
-	res.setHeader("Access-Control-Allow-Origin", "*");
-	res.setHeader(
-		"Access-Control-Allow-Methods",
-		"GET, POST, OPTIONS, PUT, PATCH, DELETE"
-	);
-	res.setHeader("Access-Control-Allow-Credentials", true);
-	next();
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
 });
+app.use(express.json());
+app.use(cors());
 
 // api end point
 app.use("/api/admins", adminRoutes);
 app.use("/api/employees", employeeRoutes);
 
+// error handlers
 app.use(notFound);
 app.use(errorHandler);
 
 // socketio
-
 io.on("connection", (socket) => {
-	console.log("connections done!");
+  console.log("connections done!");
 
-	socket.on("join", ({ name, project }) => {
-		console.log(name, project);
-	});
+  socket.on("join", ({ name, project }) => {
+    const user = userJoin(socket.id, name, project);
+    socket.join(user.project);
 
-	socket.on("disconnect", () => {
-		console.log("user left the chat");
-	});
+    // welcome current user
+    socket.emit("message", {
+      user: "Admin",
+      text: `${user.name}, welcome to the project ${user.project}`,
+    });
+
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(user.project)
+      .emit("message", { user: "Admin", text: `${user.name} has joined!` });
+
+    // get all user of the project
+    io.to(user.project).emit("projectData", {
+      project: user.project,
+      users: getProjectUsers(user.project),
+    });
+  });
+
+  // listen  for chat message
+  socket.on("chatMessage", (msg, cb) => {
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.project).emit("message", { user: user.name, text: msg });
+
+    cb();
+  });
+
+  // when user disconnect
+  socket.on("disconnect", () => {
+    const user = userLeaves(socket.id);
+
+    if (user) {
+      io.to(user.project).emit("message", {
+        user: "Admin",
+        text: `${user.name} has left the chat`,
+      });
+      io.to(user.project).emit("projectData", {
+        project: user.project,
+        users: getProjectUsers(user.project),
+      });
+    }
+  });
 });
 
-// set port
+// config port
 server.listen(process.env.PORT, () => {
-	console.log(
-		`application is running on ${process.env.PORT}`.yellow.bold.underline
-	);
+  console.log(
+    `application is running on ${process.env.PORT}`.yellow.bold.underline
+  );
 });

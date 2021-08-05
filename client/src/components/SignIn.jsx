@@ -7,60 +7,60 @@ import { login } from "../actions/adminActions";
 import Message from "./Message";
 
 const SignIn = () => {
-	const location = useLocation();
-	const history = useHistory();
+  const location = useLocation();
+  const history = useHistory();
 
-	const [adminID, setAdminID] = useState("");
-	const [password, setPassword] = useState("");
+  const [adminID, setAdminID] = useState("");
+  const [password, setPassword] = useState("");
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const adminLogin = useSelector((state) => state.adminLogin);
-	const { error, adminInfo } = adminLogin;
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { error, adminInfo } = adminLogin;
 
-	const redirect = location.search
-		? location.search.split("=")[1]
-		: "/admin-dashboard";
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/admin-dashboard";
 
-	useEffect(() => {
-		if (adminInfo) {
-			history.push(redirect);
-		}
-	}, [history, adminInfo, redirect]);
+  useEffect(() => {
+    if (adminInfo) {
+      history.push(redirect);
+    }
+  }, [history, adminInfo, redirect]);
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		dispatch(login(adminID, password));
-	};
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(adminID, password));
+  };
 
-	return (
-		<>
-			{error && <Message variant="danger">{error}</Message>}
-			<div className="signin">
-				<h1>SignIn</h1>
-				<p>Login to your account</p>
-				<form onSubmit={submitHandler}>
-					<input
-						type="text"
-						value={adminID}
-						onChange={(e) => setAdminID(e.target.value)}
-						placeholder="Admin ID"
-						required
-					/>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Password"
-						required
-					/>
+  return (
+    <>
+      {error && <Message variant="danger">{error}</Message>}
+      <div className="signin">
+        <h1>SignIn</h1>
+        <p>Login to your account</p>
+        <form onSubmit={submitHandler}>
+          <input
+            type="text"
+            value={adminID}
+            onChange={(e) => setAdminID(e.target.value)}
+            placeholder="Admin ID"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+          />
 
-					<Link to="/forgot">Forgot your password?</Link>
-					<button type="submit">SignIn</button>
-				</form>
-			</div>
-		</>
-	);
+          <Link to="/forgot">Forgot your password?</Link>
+          <button type="submit">SignIn</button>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default SignIn;
